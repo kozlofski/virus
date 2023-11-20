@@ -1,0 +1,39 @@
+Należy napisać program symulujący epidemię wraz z animacją.
+Program tworzy tablice NxN ludków np. 40x120.Wirus posiada 3 cechy:
+a) zaraźliwość - p. zarażenia w 1 dniu/kroku zdrowego osobnika
+b) śmiertelność p. że chory w danym kroku/dniu umrze
+c) czas chorowania równy 1/sqrt(smiertelność) - po tym czasie ludek je i staje się
+odporny
+Cechy te powinno dać się ustawić z poziomu main (np. 3 zmienne na samym początku albo cin).
+
+Ludek posiadać może status:
+a) zdrowy 
+b) uodporniony - nie może sie zarazić
+c) martwy - nie może się zarazić ani nie zarażenia
+d) chory - zaraża i ma szansę na śmierć
+
+Następnie program działa następująco:
+- zaraża losowo jednego ludka na planszy
+- w każdym z 1000 kroków:
+a) wyliczane jest położenie wirusów
+b) chory osobnik rozsiewa wirusa na wszystkie sąsiednie pola
+c) chory osobnik:
+* licznik dni choroby zwiększa się o 1
+* ma szansę na to że umrze (śmiertelność), jeśli umiera to zmienia
+status na martwy
+* jeśli przechoruje odpowiednią ilość dni staje się uodporniony (nie zaraża i nie może zachorować)
+d) zdrowy osobnik (nieodporny) - jeśli na jego polu nie ma wirusa nic się nie dzieje
+jeśli wirus jest, istnieje zarażliwość szansy że zachoruje
+
+Na koniec symulacji dodatkowo program wyśwlietla ile osób zmarło, ile się uodproniło.
+
+Uwaga colorystyczna:
+- niebieski - zdrowy ludzik
+- cyan - uodporniony
+- czerwony - chory
+- biały -martwy
+
+Uwaga programistyczna: ponieważ program będzie wyglądał źle kompilowany prze VScode
+należy użyć Makefile np.
+main.exe: main.cpp 
+	g++ -o main.exe [plik.cpp]
